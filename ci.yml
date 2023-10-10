@@ -1,8 +1,8 @@
 prepare:
   steps:
-    - command: pyenv install -v 3.9.11
-    - command: pyenv exec python -m venv .venv
-    - command: env VIRTUAL_ENV=/home/app/user/.venv .venv/bin/pip3.9 install
+    - command: echo '\n' | /home/user/.pyenv/bin/pyenv install -v 3.9.11 || true
+    - command: /home/user/.pyenv/bin/pyenv exec python -m venv .venv
+    - command: env VIRTUAL_ENV=/home/app/user/.venv .venv/bin/pip3.9 install tts
 test:
   steps: []
 run:
