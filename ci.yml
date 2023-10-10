@@ -1,0 +1,13 @@
+prepare:
+  steps:
+    - command: pyenv install -v 3.9.11
+    - command: pyenv exec python -m venv .venv
+    - command: env VIRTUAL_ENV=/home/app/user/.venv .venv/bin/pip3.9 install
+test:
+  steps: []
+run:
+  steps:
+    - command: pyenv exec CUDA_VISIBLE_DEVICES="0" python
+        TTS/server/server.py  --model_name tts_models/en/ljspeech/tacotron2-DCA
+        --vocoder_name vocoder_models/en/ljspeech/mulitband-melgan --use_cuda
+        True
